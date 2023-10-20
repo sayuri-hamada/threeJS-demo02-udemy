@@ -52,6 +52,15 @@ tourus.position.set(0, 1, 10);
 
 scene.add(tourus);
 
+// 線形補完で滑らかに移動させる
+function lerp(x, y, a) {
+  return (1 - a) * x + a * y;
+}
+
+function scaleParcent(start, end) {
+  return (scrollParcent - start)/ (end - start);
+}
+
 // スクロールアニメーション
 const animationScripts = [];
 
@@ -61,7 +70,8 @@ animationScripts.push({
   function() {
     camera.lookAt(box.position);
     camera.position.set(0, 1, 10);
-    box.position.z += 0.01;
+    box.position.z = lerp(-15, 2, scaleParcent(0, 40));
+    tourus.position.z = lerp(10, -20, scaleParcent(0, 40))
   }
 })
 
