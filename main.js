@@ -71,6 +71,15 @@ function playScrollAnimation() {
   })
 }
 
+// ブラウザのスクロール率を取得
+let scrollParcent = 0;
+
+document.body.onscroll = () => {
+  scrollParcent = (document.documentElement.scrollTop / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 100;
+
+  console.log(scrollParcent);
+}
+
 // アニメーション
 const tick = () => {
   window.requestAnimationFrame(tick);
