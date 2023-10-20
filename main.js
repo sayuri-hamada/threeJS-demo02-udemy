@@ -65,9 +65,13 @@ animationScripts.push({
   }
 })
 
+// アニメーション開始
 function playScrollAnimation() {
   animationScripts.forEach(animation => {
-    animation.function();
+    if (scrollParcent >= animation.start && scrollParcent < animation.end) {
+      animation.function();
+    }
+
   })
 }
 
