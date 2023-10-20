@@ -35,6 +35,25 @@ const renderer = new THREE.WebGL1Renderer({
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(window.devicePixelRatio); //荒さを軽減
 
+// オブジェクトを作成
+const boxGeometry = new THREE.BoxGeometry(5, 5, 5, 10);
+const boxMaterial = new THREE.MeshNormalMaterial();
+const box = new THREE.Mesh(boxGeometry, boxMaterial);
+box.position.set(0, 0.5, -15);
+box.rotation.set(1, 1, 0);
+
+scene.add(box);
+
+
+const tourusGeometry = new THREE.TorusGeometry(8, 2, 16, 100);
+const tourusMaterial = new THREE.MeshNormalMaterial();
+const tourus = new THREE.Mesh(tourusGeometry, tourusMaterial);
+tourus.position.set(0, 1, 10);
+
+scene.add(tourus);
+
+
+
 // アニメーション
 const tick = () => {
   window.requestAnimationFrame(tick);
